@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@types/socket.io-client": "^3.0.0",
+    "@types/styled-components": "^5.1.18",
     "redux-devtools-extension": "^2.13.9"
   }
 }
