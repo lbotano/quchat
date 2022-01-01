@@ -6,7 +6,7 @@ const Container = styled.div`
 `;
 
 interface ChatMessageProps {
-  message: Message
+  message: Message;
 };
 
 const ChatMessage = ({ message }: ChatMessageProps) => {

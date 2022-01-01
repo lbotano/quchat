@@ -5,6 +5,7 @@ import { mdiSend } from '@mdi/js';
 import { Message } from '../utils/types';
 import socket from '../utils/sockets';
 import ChatMessages from './ChatMessages';
+import RoomList from './RoomList';
 
 const Container = styled.div`
   display: flex;
@@ -23,7 +24,11 @@ const Header = styled.header`
   h1 {
     font-size: 1rem;
   }
-`
+`;
+
+const Main = styled.div`
+  display: flex;
+`;
 
 const Chat = styled.div`
   flex: 1;
@@ -74,21 +79,22 @@ const SendButton = styled.button`
 `;
 
 interface ChatWindowProps {
-  token : string
-};
+  rooms: string[];
+  room: string;
+  setRoom: (room: string) => void;
+}
 
-const ChatWindow = ({ token } : ChatWindowProps) => {
+const ChatWindow = ({ rooms, room, setRoom }: ChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState('');
 
   const sendMessage = (event : React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    socket.emit('chat message', { message, token });
+    socket.emit('chatMessage', message );
   };
 
-
   useEffect(() => {
-    socket.on('chat message', (payload: Message) => {
+    socket.on('chatMessage', (payload: Message) => {
       setMessages(m => [payload, ...m]);
       setMessage('');
     });
@@ -97,30 +103,33 @@ const ChatWindow = ({ token } : ChatWindowProps) => {
   return (
     <Container>
       <Header>
-        <h1>#main</h1>
+        <h1>#{room}</h1>
       </Header>
-      <Chat>
-        <ChatMessages messages={messages} />
-        <MessageForm onSubmit={sendMessage}>
-          <ChatInput
-            type="text"
-            placeholder="Your message."
-            autoFocus
-            value={message}
-            onChange={(event : React.FormEvent<HTMLInputElement>) => {
-              setMessage(event.currentTarget.value);
-            }}
-          />
-          <SendButton>
-            <Icon
-              path={mdiSend}
-              title="Send message"
-              size={0.6}
-              color='#fff'
+      <Main>
+        <RoomList rooms={rooms} selectedRoom={room} setSelectedRoom={setRoom} />
+        <Chat>
+          <ChatMessages messages={messages} />
+          <MessageForm onSubmit={sendMessage}>
+            <ChatInput
+              type="text"
+              placeholder="Your message."
+              autoFocus
+              value={message}
+              onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                setMessage(event.currentTarget.value);
+              }}
             />
-          </SendButton>
-        </MessageForm>
-      </Chat>
+            <SendButton>
+              <Icon
+                path={mdiSend}
+                title="Send message"
+                size={0.6}
+                color='#fff'
+              />
+            </SendButton>
+          </MessageForm>
+        </Chat>
+      </Main>
     </Container>
   );
 };

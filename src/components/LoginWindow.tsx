@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import socket from '../utils/sockets';
 
 interface LoginWindowProps {
-  setIsLoggedIn : React.Dispatch<React.SetStateAction<boolean>>,
-  setToken: React.Dispatch<React.SetStateAction<string>>
+  setIsLoggedIn : React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Container = styled.div`
@@ -56,14 +55,11 @@ const Button = styled.button`
   }
 `;
 
-const LoginWindow = ({ setIsLoggedIn, setToken } : LoginWindowProps) => {
+const LoginWindow = ({ setIsLoggedIn } : LoginWindowProps) => {
   const [username, setUsername] = useState('');
 
   const login = (event : React.FormEvent) => {
     event.preventDefault();
-    socket.on('authenticate', (arg:any) => {
-      setToken(arg);
-    });
     socket.emit('authenticate', username);
     setIsLoggedIn(true);
   };
