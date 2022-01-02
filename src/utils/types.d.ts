@@ -24,5 +24,5 @@ declare module 'styled-components' {
     accentClr: string,
     borderColor: string,
     border: string
-  };
-};
+  }
+}

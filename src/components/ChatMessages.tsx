@@ -26,7 +26,7 @@ const Container = styled.div`
 
 interface ChatMessagesProps {
   messages: Message[]
-};
+}
 
 const ChatMessages = ({ messages }: ChatMessagesProps) => {
   return (

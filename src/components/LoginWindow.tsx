@@ -2,10 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import socket from '../utils/sockets';
 
-interface LoginWindowProps {
-  setIsLoggedIn : React.Dispatch<React.SetStateAction<boolean>>;
-};
-
 const Container = styled.div`
   background: ${props => props.theme.window.color};
   border-radius: ${props => props.theme.window.borderRadius};
@@ -54,6 +50,10 @@ const Button = styled.button`
     background: ${props => props.theme.element.background.hover};
   }
 `;
+
+interface LoginWindowProps {
+  setIsLoggedIn : React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const LoginWindow = ({ setIsLoggedIn } : LoginWindowProps) => {
   const [username, setUsername] = useState('');

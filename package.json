@@ -20,7 +20,8 @@
     "start": "cross-env REACT_APP_STAGE=dev react-scripts start",
     "build": "cross-env REACT_APP_STAGE=prod react-scripts build",
     "test": "cross-env REACT_APP_STAGE=test react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": [
@@ -47,7 +48,11 @@
     "@types/react-dom": "^17.0.9",
     "@types/socket.io-client": "^3.0.0",
     "@types/styled-components": "^5.1.18",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
     "cross-env": "^7.0.3",
+    "eslint": "^8.6.0",
+    "eslint-plugin-react": "^7.28.0",
     "redux-devtools-extension": "^2.13.9"
   }
 }

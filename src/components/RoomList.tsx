@@ -9,7 +9,7 @@ const Container = styled.aside`
 interface RoomButtonProps {
   room: string;
   selectedRoom: string;
-};
+}
 
 const RoomButton = styled.button<RoomButtonProps>`
   background: ${props => (props.selectedRoom === props.room ? props.theme.accentClr : 'none')};
@@ -32,7 +32,7 @@ interface RoomListProps {
   rooms: string[];
   selectedRoom: string;
   setSelectedRoom: (room: string) => void;
-};
+}
 
 const RoomList = ({ rooms, selectedRoom, setSelectedRoom }: RoomListProps) => {
   return (

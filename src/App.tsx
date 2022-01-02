@@ -19,9 +19,9 @@ const App = () => {
     isLoggedIn
       ? <ChatWindow rooms={rooms} room={room} setRoom={setRoom} />
       : <LoginWindow
-          setIsLoggedIn={setIsLoggedIn}
-        />
+        setIsLoggedIn={setIsLoggedIn}
+      />
   );
-}
+};
 
 export default App;
