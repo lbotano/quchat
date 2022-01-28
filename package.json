@@ -52,7 +52,6 @@
     "@typescript-eslint/parser": "^5.8.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.6.0",
-    "eslint-plugin-react": "^7.28.0",
-    "redux-devtools-extension": "^2.13.9"
+    "eslint-plugin-react": "^7.28.0"
   }
 }

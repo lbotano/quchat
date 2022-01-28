@@ -8,13 +8,14 @@ const App = () => {
   const [rooms, setRooms] = useState<string[]>([]);
   const [room, setRoom] = useState('general');
 
+  // Get the list of available chat rooms
   useEffect(() => {
     socket.on('getRooms', (rooms: string[]) => {
       setRooms(rooms);
     });
     socket.emit('getRooms');
   }, []);
-  
+
   return (
     isLoggedIn
       ? <ChatWindow rooms={rooms} room={room} setRoom={setRoom} />
