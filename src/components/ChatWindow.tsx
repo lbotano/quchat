@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Message } from '../utils/types';
 import socket from '../utils/sockets';
+import ChatHeader from './ChatHeader';
 import ChatMessages from './ChatMessages';
 import RoomList from './RoomList';
 import MessageForm from './MessageForm';
@@ -19,17 +20,6 @@ const Container = styled.div`
   backdrop-filter: ${props => props.theme.window.filter};
 `;
 
-const Header = styled.header`
-  flex: 0;
-  border-bottom: ${props => props.theme.border};
-  text-align: center;
-  user-select: none;
-  cursor: pointer;
-
-  h1 {
-    font-size: 1rem;
-  }
-`;
 
 const Main = styled.div`
   height: 0;
@@ -69,9 +59,11 @@ const ChatWindow = ({ rooms, room, setRoom }: ChatWindowProps) => {
 
   return (
     <Container>
-      <Header onClick={() => setShowRoomList(!showRoomList)}>
-        <h1>#{room}</h1>
-      </Header>
+      <ChatHeader
+        showRoomList={showRoomList}
+        setShowRoomList={setShowRoomList}
+        currentRoom={room}
+      />
       <Main>
         {
           showRoomList
