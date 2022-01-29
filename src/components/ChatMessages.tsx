@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import ChatMessage from './ChatMessage';
 
 const Container = styled.div`
-  height: min(600px, 80vh);
-  width: min(600px, 80vw);
-  margin-bottom: 1.5rem;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column-reverse;
+  flex: 1;
+  margin-bottom: 1.5rem;
+  overflow-y: scroll;
   scrollbar-color:
     ${props => props.theme.txtClr}
     #0000;

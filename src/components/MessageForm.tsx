@@ -5,9 +5,12 @@ import { mdiSend } from '@mdi/js';
 
 const Container = styled.form`
   display: flex;
+  flex: 0;
 `;
 
 const ChatInput = styled.input`
+  width: auto;
+  display: block;
   flex: 1;
   font-size: 1rem;
   color: ${props => props.theme.txtClr};
@@ -15,6 +18,7 @@ const ChatInput = styled.input`
   border: none;
   border-radius: ${props => props.theme.element.borderRadius};
   padding: .3em 1em;
+  margin-right: 1em;
   transition: outline .05s ease-in-out;
   outline: 0px solid ${props => props.theme.borderColor};
 

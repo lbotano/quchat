@@ -9,16 +9,22 @@ import MessageForm from './MessageForm';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 600px;
+  max-width: 100vw;
+  height: 600px;
+  max-height: 100vh;
+  overflow: hidden;
   background: ${props => props.theme.window.color};
   border-radius: ${props => props.theme.window.borderRadius};
   backdrop-filter: ${props => props.theme.window.filter};
-  overflow: hidden;
 `;
 
 const Header = styled.header`
   flex: 0;
-  text-align: center;
   border-bottom: ${props => props.theme.border};
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
 
   h1 {
     font-size: 1rem;
@@ -26,10 +32,14 @@ const Header = styled.header`
 `;
 
 const Main = styled.div`
+  height: 0;
   display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 const Chat = styled.div`
+  height: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -45,6 +55,7 @@ interface ChatWindowProps {
 
 const ChatWindow = ({ rooms, room, setRoom }: ChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [showRoomList, setShowRoomList] = useState<boolean>(false);
 
   const sendMessage = (message: string) => {
     socket.emit('chatMessage', message);
@@ -58,11 +69,15 @@ const ChatWindow = ({ rooms, room, setRoom }: ChatWindowProps) => {
 
   return (
     <Container>
-      <Header>
+      <Header onClick={() => setShowRoomList(!showRoomList)}>
         <h1>#{room}</h1>
       </Header>
       <Main>
-        <RoomList rooms={rooms} selectedRoom={room} setSelectedRoom={setRoom} />
+        {
+          showRoomList
+            ? <RoomList rooms={rooms} selectedRoom={room} setSelectedRoom={setRoom} />
+            : null
+        }
         <Chat>
           <ChatMessages messages={messages} />
           <MessageForm
