@@ -47,6 +47,15 @@ const ChatWindow = ({ rooms, room, setRoom }: ChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [showRoomList, setShowRoomList] = useState<boolean>(false);
 
+  const setSelectedRoom = (newRoom: string) => {
+    setRoom(newRoom);
+    setMessages([
+      {
+        username: '@system',
+        message: `You are now in room #${newRoom}`
+      },...messages]);
+  };
+
   const sendMessage = (message: string) => {
     socket.emit('chatMessage', message);
   };
@@ -67,7 +76,7 @@ const ChatWindow = ({ rooms, room, setRoom }: ChatWindowProps) => {
       <Main>
         {
           showRoomList
-            ? <RoomList rooms={rooms} selectedRoom={room} setSelectedRoom={setRoom} />
+            ? <RoomList rooms={rooms} selectedRoom={room} setSelectedRoom={setSelectedRoom} />
             : null
         }
         <Chat>

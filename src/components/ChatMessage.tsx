@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 import { Message } from '../utils/types';
+import MessageText from './MessageText';
 
-const Container = styled.div`
+interface ContainerProps {
+  message: Message;
+}
+
+const Container = styled.div<ContainerProps>`
   padding-top: .5em;
+  opacity: ${props => props.message.username === '@system' ? .5 : 1};
 `;
 
 interface ChatMessageProps {
@@ -11,9 +17,9 @@ interface ChatMessageProps {
 
 const ChatMessage = ({ message }: ChatMessageProps) => {
   return (
-    <Container>
+    <Container message={message}>
       <b>{message.username}: </b>
-      <span>{message.message}</span>
+      <MessageText text={message.message} />
     </Container>
   );
 };
