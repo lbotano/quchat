@@ -4,6 +4,7 @@ Quchat is a simple chat application.
 Live demo available [here](https://quchat.herokuapp.com/)
 
 ![Screenshot](https://i.imgur.com/8a8kdS8l.png "Screenshot")
+![Emoji and link support](https://i.imgur.com/yMMXFFy.gif "Emoji and link support")
 
 # Building
 Create a `.env` file and set `REACT_SOCKET_URL` to the URL of the server you want to connect to.
