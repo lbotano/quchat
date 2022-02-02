@@ -3,7 +3,6 @@ Quchat is a simple chat application.
 
 Live demo available [here](https://quchat.herokuapp.com/)
 
-![Screenshot](https://i.imgur.com/8a8kdS8l.png "Screenshot")
 ![Emoji and link support](https://i.imgur.com/yMMXFFy.gif "Emoji and link support")
 
 # Building
