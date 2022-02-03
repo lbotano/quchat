@@ -20,12 +20,10 @@ const App = () => {
 
   // Update the state when connecting or disconnecting from the server
   socket.on('connect', () => {
-    console.log('Connected!');
     setIsConnected(true);
   });
 
   socket.on('disconnect', () => {
-    console.log('Disconnected!');
     setIsConnected(false);
   });
 

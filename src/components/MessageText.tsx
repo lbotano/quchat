@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import styled from 'styled-components';
 
 const isValidUrl = (url: string) => {
@@ -47,7 +48,9 @@ const MessageText = ({ text }: MessageTextProps) => {
   const elements = text.split(/(\S+\s+)/).map((word, i) => (
     isValidUrl(word)
       ? <Link href={word} key={i}>{word}</Link>
-      : <>{emoticonToEmoji[word.trim().toUpperCase()] || word}</>
+      : <Fragment key={i}>
+        {emoticonToEmoji[word.trim().toUpperCase()] || word}
+      </Fragment>
   ));
   return <>{elements}</>;
 };

@@ -48,11 +48,14 @@ const ChatWindow = ({ rooms, room, setRoom }: ChatWindowProps) => {
 
   const setSelectedRoom = (newRoom: string) => {
     setRoom(newRoom);
-    setMessages([
-      {
-        username: '@system',
-        message: `You are now in room #${newRoom}`
-      },...messages]);
+    setMessages(
+      [
+        {
+          username: '@system',
+          message: `You are now in room #${newRoom}`
+        }, ...messages
+      ]
+    );
   };
 
   const sendMessage = (message: string) => {
