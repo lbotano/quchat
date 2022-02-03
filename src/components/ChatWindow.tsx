@@ -12,8 +12,7 @@ const Container = styled.div`
   flex-direction: column;
   width: 600px;
   max-width: 100vw;
-  height: 600px;
-  max-height: 100vh;
+  height: min(600px, 100%);
   overflow: hidden;
   background: ${props => props.theme.window.color};
   border-radius: ${props => props.theme.window.borderRadius};
