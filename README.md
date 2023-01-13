@@ -1,7 +1,7 @@
 # Quchat client
 Quchat is a simple chat application.
 
-Live demo available [here](https://quchat.herokuapp.com/)
+Live demo available [here](https://quchat.onrender.com/)
 
 ![Emoji and link support](https://i.imgur.com/yMMXFFy.gif "Emoji and link support")
 
